@@ -159,9 +159,6 @@ def test_run_state_zero_records(run_mock, access_mock, data_source_mock, test_co
 
     class MockDSNoRecords(HttpDataSourceRunnerMeta):
 
-        def __init__(self, config, start_key, html_filters, session, storage_name_ctor):
-            super().__init__(config, start_key, html_filters, session, storage_name_ctor)
-
         def _descend_html_hierarchy(self, ignore_node):
             self._todo_list = {}
             nonlocal mock_called
@@ -229,22 +226,22 @@ def test_run_by_file(do_one_mock, clients_mock, test_data_dir, test_config, tmp_
 @patch('caom2pipe.manage_composable.http_get')
 @patch('caom2pipe.client_composable.ClientCollection')
 def test_run_by_file_store_ingest_modify(
-    clients_mock, 
-    http_get_mock, 
-    fits_verify_mock, 
-    visit_mock, 
-    file_info_mock, 
-    file_header_mock, 
-    test_data_dir, 
-    test_config, 
-    tmp_path, 
+    clients_mock,
+    http_get_mock,
+    fits_verify_mock,
+    visit_mock,
+    file_info_mock,
+    file_header_mock,
+    test_data_dir,
+    test_config,
+    tmp_path,
     change_test_dir,
 ):
     test_file_uri = 'cadc:NEOSSAT/NEOS_SCI_2019268004930_clean.fits'
     file_header_mock.return_value = []
     file_info_mock.return_value = FileInfo(
         id=test_file_uri,
-        file_type='application/fits', 
+        file_type='application/fits',
     )
     visit_mock.side_effect = _mock_visit_wd
     fits_verify_mock.return_value = True
@@ -344,5 +341,5 @@ def _mock_get_file_info(uri):
         return {'type': 'application/fits'}
 
 
-def _mock_http_get(url, local_fqn):
+def _mock_http_get(url, local_fqn, verify_session):
     pass

@@ -97,15 +97,13 @@ def _run():
     """
     config = Config()
     config.get_executors()
-    transferrer = HttpTransfer()
+    transferrer = HttpTransfer(verify_session=False)
     return rc.run_by_todo_runner_meta(
         config=config,
         meta_visitors=META_VISITORS,
         data_visitors=DATA_VISITORS,
         store_transfer=transferrer,
         storage_name_ctor=NEOSSatName,
-        organizer_module_name='neossat2caom2.data_source',
-        organizer_class_name='NEOSSatOrganizeExecutesRunnerMeta',
     )
 
 
@@ -132,9 +130,11 @@ def _run_state():
     session = get_endpoint_session()
     data_sources = []
     for start_key in config.data_sources:
-        incremental_source = HttpDataSourceRunnerMeta(config, start_key, pages_template, session, NEOSSatName)
+        incremental_source = HttpDataSourceRunnerMeta(
+            config, start_key, pages_template, session, NEOSSatName, verify_session=False
+        )
         data_sources.append(incremental_source)
-    transferrer = HttpTransfer()
+    transferrer = HttpTransfer(verify_session=False)
     return rc.run_by_state_runner_meta(
         config=config,
         meta_visitors=META_VISITORS,
@@ -142,8 +142,6 @@ def _run_state():
         sources=data_sources,
         store_transfer=transferrer,
         storage_name_ctor=NEOSSatName,
-        organizer_module_name='neossat2caom2.data_source',
-        organizer_class_name='NEOSSatOrganizeExecutesRunnerMeta',
     )
 
 
