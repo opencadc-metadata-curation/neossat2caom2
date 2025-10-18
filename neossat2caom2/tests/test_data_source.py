@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # ***********************************************************************
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2022.                            (c) 2022.
+#  (c) 2025.                            (c) 2025.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -116,7 +115,7 @@ def test_incremental_source(query_endpoint_mock, test_config, tmpdir):
     assert test_reporter._summary._entries_sum == 63, f'wrong entries {test_reporter._summary.report()}'
 
 
-def _query_endpoint(url, ignore_session):
+def _query_endpoint(url, ignore_session, ignore_verify_session):
     result = type('response', (), {})
     result.text = None
     result.close = lambda: None
