@@ -4,7 +4,7 @@ echo "Get a proxy certificate"
 cp $HOME/.ssl/cadcproxy.pem ./ || exit $?
 
 COLLECTION="neossat"
-CONTAINER="opencadc/${COLLECTION}2caom2"
+CONTAINER="opencadc-metadata-curation/${COLLECTION}2caom2"
 echo "Get the image ${CONTAINER}"
 docker pull ${CONTAINER} || exit $?
 

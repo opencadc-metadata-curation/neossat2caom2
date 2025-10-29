@@ -83,7 +83,7 @@ In an empty directory (the 'working directory'), on a machine with Docker instal
 1. The application requires a X509 certificate for authentication and authorization. The following commands will generate a valid 10-day proxy. Note that you will be prompted for the `Password:`
 
    ```
-   docker run --rm -ti --mount "type=bind,src=${PWD},dst=/usr/src/app" opencadc/neossat2caom2 /bin/bash
+   docker run --rm -ti --mount "type=bind,src=${PWD},dst=/usr/src/app" opencadc-metadata-curation/neossat2caom2 /bin/bash
    cadcops@c34e8321f722:/usr/src/app$ cadc-get-cert --days-valid 10 --cert-file /usr/src/app/cadcproxy.pem -u <CADC User Name>
    Password:
    exit
