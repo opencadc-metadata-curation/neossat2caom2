@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -341,5 +341,5 @@ def _mock_get_file_info(uri):
         return {'type': 'application/fits'}
 
 
-def _mock_http_get(url, local_fqn, verify_session):
+def _mock_http_get(url, local_fqn, verify, timeout):
     pass

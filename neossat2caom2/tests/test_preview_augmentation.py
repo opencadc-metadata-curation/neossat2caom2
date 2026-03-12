@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -115,10 +115,10 @@ def test_preview_augmentation(test_config, test_data_dir, tmpdir):
             preva = 'cadc:NEOSSAT/2019213215700_raw_prev.png'
             thumba = 'cadc:NEOSSAT/2019213215700_raw_prev_256.png'
             assert test_obs.planes[product_id].artifacts[preva].content_checksum == ChecksumURI(
-                'md5:ae6bbd4001e4ba97b2df22d9b60dfd98'
+                'md5:dd86873aa87f3c14c105b072364d5a08'
             ), 'prev checksum failure'
             assert test_obs.planes[product_id].artifacts[thumba].content_checksum == ChecksumURI(
-                'md5:46df6798baf2f1c941693d4ca52843bb'
+                'md5:cc4f3232d79feaebef6a80a8c17d69e7'
             ), 'thumb checksum failure'
 
 
