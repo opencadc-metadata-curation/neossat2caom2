@@ -2,7 +2,7 @@
 # ******************  CANADIAN ASTRONOMY DATA CENTRE  *******************
 # *************  CENTRE CANADIEN DE DONNÉES ASTRONOMIQUES  **************
 #
-#  (c) 2025.                            (c) 2025.
+#  (c) 2026.                            (c) 2026.
 #  Government of Canada                 Gouvernement du Canada
 #  National Research Council            Conseil national de recherches
 #  Ottawa, Canada, K1A 0R6              Ottawa, Canada, K1A 0R6
@@ -87,6 +87,7 @@ TEST_START_TIME_STR = '2022-02-01T13:57:00'
 def test_incremental_source(query_endpoint_mock, test_config, tmpdir):
     query_endpoint_mock.side_effect = _query_endpoint
     test_config.data_sources = ['https://localhost:8888/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/']
+    test_config.rate_limit_delay = 0.0
     test_config.change_working_directory(tmpdir)
     test_start_time = make_datetime(TEST_START_TIME_STR)
     State.write_bookmark(test_config.state_fqn, test_config.data_sources[0], test_start_time)
@@ -115,7 +116,7 @@ def test_incremental_source(query_endpoint_mock, test_config, tmpdir):
     assert test_reporter._summary._entries_sum == 63, f'wrong entries {test_reporter._summary.report()}'
 
 
-def _query_endpoint(url, ignore_session, ignore_verify_session):
+def _query_endpoint(url, ignore_session, verify, timeout):
     result = type('response', (), {})
     result.text = None
     result.close = lambda: None

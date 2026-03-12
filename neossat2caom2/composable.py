@@ -97,7 +97,7 @@ def _run():
     """
     config = Config()
     config.get_executors()
-    transferrer = HttpTransfer(verify_session=False)
+    transferrer = HttpTransfer(verify_session=False, timeout=config.data_source_timeout)
     return rc.run_by_todo_runner_meta(
         config=config,
         meta_visitors=META_VISITORS,
